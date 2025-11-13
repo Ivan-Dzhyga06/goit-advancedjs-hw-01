@@ -1,23 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Галерея зображень</title>
   </head>
+
   <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
 
-    <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
-    </main>
+    <button id="open-form" style="margin: 20px; padding: 10px 16px; font-size: 16px;">
+        Відкрити форму
+    </button>
 
-    <load src="./partials/footer.html" />
+    <main id="content"></main>
 
-    <script type="module" src="./main.js"></script>
+    <script type="module">
+    import "./css/styles.css";
+
+    async function loadGallery() {
+      const res = await fetch("./1-gallery.html");
+      const html = await res.text();
+      document.querySelector("#content").innerHTML = html;
+      await import("./js/1-gallery.js");
+    }
+
+    async function loadForm() {
+      const res = await fetch("./2-form.html");
+      const html = await res.text();
+      document.querySelector("#content").innerHTML = html;
+      await import("./js/2-form.js");
+    }
+
+    loadGallery();
+
+    document.getElementById("open-form").addEventListener("click", loadForm);
+  </script>
   </body>
 </html>
