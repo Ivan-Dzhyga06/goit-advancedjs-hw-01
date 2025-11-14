@@ -4,36 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Галерея зображень</title>
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
   <body>
-
-    <button id="open-form" style="margin: 20px; padding: 10px 16px; font-size: 16px;">
-        Відкрити форму
-    </button>
-
     <main id="content"></main>
 
-    <script type="module">
-    import "./css/styles.css";
-
-    async function loadGallery() {
-      const res = await fetch("./1-gallery.html");
-      const html = await res.text();
-      document.querySelector("#content").innerHTML = html;
-      await import("./js/1-gallery.js");
-    }
-
-    async function loadForm() {
-      const res = await fetch("./2-form.html");
-      const html = await res.text();
-      document.querySelector("#content").innerHTML = html;
-      await import("./js/2-form.js");
-    }
-
-    loadGallery();
-
-    document.getElementById("open-form").addEventListener("click", loadForm);
-  </script>
+    <a class="task-button" href="./1-gallery.html">Gallery</a>
+    <a class="task-button" href="./2-form.html">Form</a>
   </body>
 </html>
